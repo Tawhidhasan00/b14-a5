@@ -4,6 +4,8 @@ import type { BadgeType } from "../../Type/type";
 
 interface ItechCard {
     tech: Itechnology;
+    addStack:(tech:Itechnology)=>void;
+    added:boolean;
 }
 
 
@@ -23,40 +25,50 @@ const badgeStyle: Record<BadgeType, string> = {
 }
 
 
-const TechnologyCard = ({tech}: ItechCard) => {
+const TechnologyCard = ({tech, addStack, added}: ItechCard) => {
     return (
         <div> 
             
-                    <div className="card bg-base-100 w-full shadow-sm">
+            <div className={`card bg-base-100 w-full shadow-sm border   
+                            ${added ? 'border-red-600' : 'border-gray-100'} `}>
 
-                            <figure className="flex justify-between px-5 pt-5">
-                                <img className="w-8 h-8 m-2"
-                                src={tech.icon} alt="icon" />
-                                <div className={`border rounded-full font-medium ${badgeStyle[tech.badge]} p-1`}>
-                                    {tech.badge}
+                    <figure className="flex justify-between px-5 pt-5">
+                        <img className="w-8 h-8 m-2"
+                        src={tech.icon} alt="icon" />
+                        <div className={`border rounded-full font-medium ${badgeStyle[tech.badge]} p-1`}>
+                            {tech.badge}
+                        </div>
+                    </figure>
+
+
+                    <div className="card-body">
+                        
+                            <h2 className="card-title text-[22px] font-bold"> {tech.name} </h2>
+                            <p className="text-gray-500 font-medium"> {tech.description} </p>
+
+                             <div className="divider"></div>
+
+                            <div className="flex justify-between gap-12 my-3">
+
+                                <span className="font-bold text-gray-500 bg-gray-200 rounded-[5px] w-18 h-6 text-center"> {tech.category} </span>
+                                <p className="font-medium text-gray-500 w-30"> {tech.difficulty} </p>
+                                <div className="flex justify-center items-center">
+                                    <FaStar className="text-yellow-500"/>
+                                    <p className="font-medium ">  {tech.rating} </p>
                                 </div>
-                            </figure>
-
-                            <div className="card-body">
-                                <h2 className="card-title text-[22px] font-bold"> {tech.name} </h2>
-                                <p className="text-gray-500 font-medium"> {tech.description} </p>
-
-                                -----------
-
-                                <div className="flex justify-between gap-12 my-3">
-                                    <span className="font-bold text-gray-500 bg-gray-200 rounded-[5px] w-18 h-6 text-center"> {tech.category} </span>
-                                    <p className="font-medium text-gray-500 w-30"> {tech.difficulty} </p>
-                                    <div className="flex justify-center items-center">
-                                        <FaStar className="text-yellow-500"/>
-                                        <p className="font-medium ">  {tech.rating} </p>
-                                    </div>
-                                </div>
-
-                                <div className="">
-                                    <button className="btn w-78 text-gray-300 bg-black rounded-2xl h-12">Add to Stack</button>
-                                </div>
+                                
                             </div>
+
+                            <div className="">
+                                <button onClick={()=>addStack(tech)}
+                                        disabled={added}
+                                        className={`btn w-78 text-gray-300 ${added ? 'bg-gray-100' : 'bg-black'} rounded-2xl h-12`}
+                                                    > {added ? "Added to Stack" : "Add to Stack"} </button>
+                            </div>
+
                     </div>
+
+            </div>
             
         </div>
     );

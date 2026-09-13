@@ -1,4 +1,4 @@
-import { Suspense } from "react"
+import { Suspense, useState } from "react"
 import Hero from "./Components/Hero"
 import Navbar from "./Components/Navbar"
 import Technology from "./Components/Technology/Technology"
@@ -14,13 +14,41 @@ const technologyPromise = async(): Promise<Itechnology[]> =>  {
 
 function App() {
 
+  const [stack, setStack] = useState<Itechnology[]>([])
+
+
+
+  const addStack = (tech: Itechnology) => {
+    const exists = stack.find((item) => item.id === tech.id);
+    if (exists) {
+      // toast.warning("Already added!");
+      return;
+    }
+    setStack([...stack, tech]);
+    // toast.success(`${tech.name} added`);
+  };
+
+
+
+  const removeStack = (id: string) => {
+    setStack(stack.filter((item) => item.id !== id));
+    // toast.info("Removed");
+  };
+
+  const removeAll = () => {
+    setStack([]);
+    // toast.error("Stack cleared");
+  };
+
+
   return (
     <>
       <Navbar/>
       <Hero/>
       <Suspense fallback={ <h2>Loading..!!!</h2> }> 
-        <Technology technologyPromise={technologyPromise()}/>
+        <Technology technologyPromise={technologyPromise()} stack={stack} addStack={addStack} removeStack={removeStack} removeAll={removeAll} />
       </Suspense>
+      
       
     </>
   )

@@ -4,13 +4,18 @@ import AvailableTechs from "./AvailableTechs";
 import SideBar from "./SideBar";
 
 interface ItechnologyList {
-    technologyPromise: Promise<Itechnology[]>
+    technologyPromise: Promise<Itechnology[]>;
+    stack: Itechnology[];
+    addStack: (tech: Itechnology) => void;
+    removeStack: (id: string) => void;
+    removeAll: () => void;
 }
 
 
-const Technology = ({technologyPromise}: ItechnologyList) => {
+const Technology = ({technologyPromise, stack, addStack, removeStack, removeAll}: ItechnologyList) => {
     const technologies = use(technologyPromise)
-    console.log(technologies)
+
+
     return (
         <div className="container mx-auto"> 
 
@@ -20,8 +25,8 @@ const Technology = ({technologyPromise}: ItechnologyList) => {
             </div>
 
             <div className="mt-15 flex justify-between gap-10">
-                <AvailableTechs techProp={technologies} />
-                <SideBar techProp={technologies}/>
+                <AvailableTechs techProp={technologies} stack={stack} addStack={addStack} />
+                <SideBar stack={stack} removeStack={removeStack} removeAll={removeAll} />
             </div>
         </div>
     );
