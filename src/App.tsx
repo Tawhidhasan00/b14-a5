@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar"
 import Technology from "./Components/Technology/Technology"
 import type Itechnology from "./Type/type"
 import { Bounce, toast } from "react-toastify"
+import Footer from "./Components/Footer"
 
 
 const technologyFetch = async(): Promise<Itechnology[]> =>  {
@@ -83,7 +84,7 @@ function App() {
                     removeStack={removeStack} removeAll={removeAll} />
       </Suspense>
       
-      
+      <Footer/>
     </>
   )
 }

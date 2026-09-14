@@ -44,7 +44,7 @@ const TechnologyCard = ({tech, addStack, IsAdded}: ItechCard) => {
                     <div className="card-body">
                         
                             <h2 className="card-title text-[22px] font-bold"> {tech.name} </h2>
-                            <p className="text-gray-500 font-medium"> {tech.description} </p>
+                            <p className="text-gray-400 font-sm leading-6"> {tech.description} </p>
 
                              <div className="divider"></div>
 
