@@ -1,3 +1,4 @@
+import { RxCross2 } from "react-icons/rx";
 import type Itechnology from "../../Type/type";
 
 interface ISidebar {
@@ -33,7 +34,7 @@ const SideBar = ({stack, removeStack, removeAll}: ISidebar) => {
                                             </div>
                                         </div>
 
-                                        <button onClick={() => removeStack(item.id)}> ✕ </button>
+                                        <RxCross2 className="text-xl " onClick={() => removeStack(item.id)} />
                                 </div>
                                 ))}
                             </div>
