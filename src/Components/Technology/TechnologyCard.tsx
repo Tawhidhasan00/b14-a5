@@ -4,8 +4,8 @@ import type { BadgeType } from "../../Type/type";
 
 interface ItechCard {
     tech: Itechnology;
-    addStack:(tech:Itechnology)=>void;
-    added:boolean;
+    addStack: (tech:Itechnology)=>void;
+    IsAdded: boolean;
 }
 
 
@@ -25,12 +25,12 @@ const badgeStyle: Record<BadgeType, string> = {
 }
 
 
-const TechnologyCard = ({tech, addStack, added}: ItechCard) => {
+const TechnologyCard = ({tech, addStack, IsAdded}: ItechCard) => {
     return (
         <div> 
             
             <div className={`card bg-base-100 w-full shadow-sm border   
-                            ${added ? 'border-red-600' : 'border-gray-100'} `}>
+                            ${IsAdded ? 'border-red-600' : 'border-gray-100'} `}>
 
                     <figure className="flex justify-between px-5 pt-5">
                         <img className="w-8 h-8 m-2"
@@ -61,9 +61,9 @@ const TechnologyCard = ({tech, addStack, added}: ItechCard) => {
 
                             <div className="">
                                 <button onClick={()=>addStack(tech)}
-                                        disabled={added}
-                                        className={`btn w-78 text-gray-300 ${added ? 'bg-gray-100' : 'bg-black'} rounded-2xl h-12`}
-                                                    > {added ? "Added to Stack" : "Add to Stack"} </button>
+                                        disabled={IsAdded}
+                                        className={`btn w-78 text-gray-300 ${IsAdded ? 'bg-gray-100' : 'bg-black'} rounded-2xl h-12`}
+                                                    > {IsAdded ? "Added to Stack" : "Add to Stack"} </button>
                             </div>
 
                     </div>

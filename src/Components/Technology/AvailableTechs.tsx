@@ -18,7 +18,7 @@ const AvailableTechs = ({techProp, stack, addStack}: ItechCard) => {
                                             key={techs.id}
                                             tech={techs} 
                                             addStack={addStack} 
-                                            added={ stack.some((item)=>item.id===techs.id)} />
+                                            IsAdded={ stack.some((item)=>item.id===techs.id)} />
                         </div>
                     )
                 })

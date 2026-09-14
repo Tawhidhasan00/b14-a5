@@ -1,48 +1,52 @@
 import type Itechnology from "../../Type/type";
-import TechnologyCard from "./TechnologyCard";
 
 interface ISidebar {
-    techProp: Itechnology[]
+    stack: Itechnology[];
+    removeStack: (id: string) => void;
+    removeAll: () => void;
 }
 
 
-const SideBar = ({techProp}: ISidebar) => {
+const SideBar = ({stack, removeStack, removeAll}: ISidebar) => {
     return (
         <div>
-            <div className="card bg-base-100 w-full shadow-sm">
+            
+            <div className="card bg-base-100 w-80 shadow-sm p-4">
+                    <h2 className="font-bold text-xl">Your Stack</h2>   
+                    <p className="text-gray-400 text-medium"> {stack.length} Technologies Selected </p>
 
-                            <figure className="flex justify-between ">
-                                <img className="w-8 h-8 m-2"
-                                 alt="icon" />
-                                <div >
-                                    
-                                </div>
-                            </figure>
-
-                            <div className="card-body">
-                                <h2 className="card-title">Card Title</h2>
-                                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                                <div className="card-actions justify-end">
-                                <button className="btn btn-primary">Buy Now</button>
-                                </div>
+                    {
+                        stack.length === 0 ? 
+                        (
+                            <div className="border border-dashed p-8 mt-5 text-centertext-gray-400 rounded-xl">
+                                Your Stack is empty
                             </div>
-                            ------------
-                            <figure className="flex justify-between ">
-                                <img className="w-8 h-8 m-2"
-                                 alt="icon" />
-                                <div >
-                                    
-                                </div>
-                            </figure>
+                        ) : (
+                            <div className="space-y-3 mt-5"> {stack.map((item) => (
+                                <div key={item.id} className="border rounded-lg p-3 flex items-center justify-between" >
 
-                            <div className="card-body">
-                                <h2 className="card-title">Card Title</h2>
-                                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                                <div className="card-actions justify-end">
-                                <button className="btn btn-primary">Buy Now</button>
+                                        <div className="flex gap-3 items-center">
+                                            <img src={item.icon} className="w-8" />
+                                            <div>
+                                                <h3 className="font-semibold">{item.name}</h3>
+                                                <p className="text-xs text-gray-400">{item.category}</p>
+                                            </div>
+                                        </div>
+
+                                        <button onClick={() => removeStack(item.id)}> ✕ </button>
                                 </div>
+                                ))}
                             </div>
-                    </div>
+                        )
+                    }
+
+                    <button
+                            onClick={removeAll}
+                            className="border border-red-300 text-red-500 w-full py-2 mt-5 rounded-lg"
+                            > Remove All
+                    </button>
+            </div>
+
         </div>
     );
 };
