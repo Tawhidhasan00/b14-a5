@@ -6,7 +6,7 @@ import type Itechnology from "./Type/type"
 import { Bounce, toast } from "react-toastify"
 
 
-const technologyPromise = async(): Promise<Itechnology[]> =>  {
+const technologyFetch = async(): Promise<Itechnology[]> =>  {
   const res = await fetch('/data.json')
   const data = await res.json();
   return data;
@@ -16,6 +16,7 @@ const technologyPromise = async(): Promise<Itechnology[]> =>  {
 function App() {
 
   const [stack, setStack] = useState<Itechnology[]>([])
+  const [technologyPromise] = useState(() => technologyFetch())
 
 
 
@@ -76,8 +77,8 @@ function App() {
     <>
       <Navbar/>
       <Hero/>
-      <Suspense fallback={ <h2>Loading..!!!</h2> }> 
-        <Technology technologyPromise={technologyPromise()} 
+      <Suspense fallback={ <h2 className="text-center font-semibold text-4xl text-gray-500">Loading..!!!</h2> }> 
+        <Technology technologyPromise={technologyPromise} 
                     stack={stack} addStack={addStack} 
                     removeStack={removeStack} removeAll={removeAll} />
       </Suspense>
