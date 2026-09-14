@@ -15,16 +15,16 @@ const SideBar = ({stack, removeStack, removeAll}: ISidebar) => {
             <div className="card bg-base-100 w-80 shadow-sm p-4">
                     <h2 className="font-bold text-xl">Your Stack</h2>   
                     <p className="text-gray-400 text-medium"> {
-                                                                    stack.length > 0 ? (
-                                                                        <div>
-                                                                            {stack.length} Technologies Selected
-                                                                        </div>
-                                                                    ) : (
-                                                                        <div>
-                                                                            No technologies selected yet
-                                                                        </div>
-                                                                    )
-                                                                } </p>
+                                    stack.length > 0 ? (
+                                        <div>
+                                            {stack.length} Technologies Selected
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            No technologies selected yet
+                                        </div>
+                                    )
+                                } </p>
 
                     {
                         stack.length === 0 ? 

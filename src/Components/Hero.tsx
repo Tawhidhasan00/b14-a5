@@ -6,11 +6,11 @@ const Hero = () => {
     return (
         <section className="container mx-auto  flex items-center justify-around">
 
-            <div className='w-1/2 space-y-10 py-50'>
+            <div className='w-1/2 space-y-10 pt-50 pb-40'>
                 <h1 className="text-6xl font-bold text-[#111827] "> 
                         Build Your Ideal
                     <br />
-                    <span className='bg-clip-text'> Development Stack </span>
+                    <span className='bg-brand bg-clip-text text-transparent'> Development Stack </span>
                 </h1>
                 <p className="mt-6 text-[18px] text-gray-500 w-120 max-w-lg leading-7"> 
                     Explore frontend, backend, database, and tooling options, compare them
@@ -18,7 +18,7 @@ const Hero = () => {
                 </p>
 
                 <div className='flex gap-4 mt-8'>
-                    <button className='border border-gray-500 px-6 py-3 rounded-[5px]'>
+                    <button className='border border-gray-500 px-6 py-3 rounded-[5px] bg-brand text-white'>
                         Explore Technologies
                     </button>
                     <button className='border border-gray-500 px-6 py-3 rounded-[5px]'>

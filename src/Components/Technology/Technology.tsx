@@ -20,7 +20,7 @@ const Technology = ({technologyPromise, stack, addStack, removeStack, removeAll}
         <div className="container mx-auto"> 
 
             <div className="space-y-2 ">
-                <h2 className="text-5xl font-bold text-[#111827] "> Explore the Technologies </h2>
+                <h2 className="text-5xl font-bold text-[#111827] "> Explore the <span className="text-[#D91B7E]">Technologies</span> </h2>
                 <p className="text-[18px] text-gray-500 my-4">Pick one technology per category to build your ideal stack</p>
             </div>
 
