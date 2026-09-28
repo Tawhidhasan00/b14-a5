@@ -21,6 +21,10 @@ DevStack is a technology stack builder web app where users can explore different
 
 ---
 
+## Live link: https://devstack-a5-b14.netlify.app/
+
+---
+
 # React Questions
 
 ### 1. What is JSX, and why is it used in React?
